@@ -83,7 +83,7 @@ class ProcessorREST(object):
 
         repos_languages = {}
         for lang in languages:
-            print("Get most stars repos of {}...".format(lang))
+            print(f"Get most stars repos of {lang}...")
             repos_languages[lang] = get_api_repos(self.api_repo_stars_lang.format(lang=lang))
         return repos_stars, repos_forks, repos_languages
 
@@ -168,11 +168,11 @@ class ProcessorGQL(object):
 
         repos_languages = {}
         for lang in languages:
-            print("Get most stars repos of {}...".format(lang))
+            print(f"Get most stars repos of {lang}...")
             repos_languages[lang] = self.parse_gql_result(
                 get_graphql_data(self.gql_stars_lang % lang)
             )
-            print("Get most stars repos of {} success!".format(lang))
+            print(f"Get most stars repos of {lang} success!")
         return repos_stars, repos_forks, repos_languages
 
 
@@ -286,4 +286,4 @@ def run_by_gql():
 if __name__ == "__main__":
     t1 = datetime.now()
     run_by_gql()
-    print("Total time: {}s".format((datetime.now() - t1).total_seconds()))
+    print(f"Total time: {(datetime.now() - t1).total_seconds()}s")
